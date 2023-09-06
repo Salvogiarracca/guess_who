@@ -1,0 +1,55 @@
+#GET http://localhost:3000/static/imgs/adolf-hitler.png
+
+#GET http://localhost:3000/items
+
+#POST http://localhost:3000/session
+#Content-Type: application/json
+
+#{
+#  "username": "salvo@test.com",
+#  "password": "psw"
+#}
+
+#GET http://localhost:3000/properties
+#
+#POST http://localhost:3000/game
+#Content-Type: application/json
+#
+#{
+#
+#}
+
+
+#GET http://localhost:3000/nitems
+#Content-Type: application/json
+#
+#{
+#  "num": 12
+#}
+
+
+#PUT http://localhost:3000/games/8/property
+#Content-Type: application/json
+#
+#{
+#  "name": "sex",
+#  "value": "female"
+#}
+
+
+#PUT http://localhost:3000/games/49/item
+#Content-Type: application/json
+#
+#{
+#  "name": "Bradley Cooper"
+#}
+
+#GET http://localhost:3000/games
+
+POST http://localhost:3000/games/
+Content-Type: application/json
+
+{
+"difficulty": 2
+}
+
