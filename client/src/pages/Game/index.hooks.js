@@ -29,7 +29,7 @@ export const useGame = () => {
         setProperties(currentProperties)
         setDisableButtons(false)
         setShowAlert(false);
-    }, 3000)};
+    }, 1000)};
 
     const start = () => {
         startGame(difficulty)
