@@ -59,9 +59,6 @@ export const useGame = () => {
     const checkEnd = () => {
         endGame(gameId, {name: guess})
             .then(res => {
-                // console.log(res.data)
-                // handleClose()
-                // setGuess("")
                 setFinishedGame(res.data.game)
                 res.data.result? setFinish("WIN"): setFinish("LOSE")
 

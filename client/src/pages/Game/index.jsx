@@ -84,14 +84,11 @@ const Game = () => {
                             isLoading ?
                                 <LoadingSpinner/> :
                                 <Row
-                                    // style={{alignItems: "center", justifyContent: "center"}}
                                 >
                                     <Col
                                         style={{
                                             margin: "inherit"
                                         }}
-                                        // className={'align-items-center justify-content-center text-center'}
-                                        // style={{alignItems:"center", justifyContent:"center", textAlign:"center"}}
                                     >
                                         {
                                             showAlert &&
@@ -99,8 +96,6 @@ const Game = () => {
                                                 <CustomAlert isTrue={isTrue} pos={"start"}/>
                                             </div>
                                         }
-
-
                                     </Col>
                                     <Col
                                         className={"col-10"}
@@ -182,8 +177,6 @@ const Game = () => {
                                         }
                                     </Col>
                                 </Row>
-
-                            //{/*</Container>*/}
                         }
                     </> :
                     <Container

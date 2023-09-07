@@ -15,7 +15,6 @@ const getByUser = user => {
 const newMatch = game => {
     return new Promise((resolve, reject) => {
         const sql = "INSERT INTO matches (user, date, status, secret_item, difficulty, score) VALUES (?,?,?,?,?,?)"
-        console.log(game)
         db.run(sql, [game.user, game.date, game.status, game.secret_item, game.difficulty, game.score], function (err) {
             if (err)
                 reject(err);

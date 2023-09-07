@@ -1,5 +1,4 @@
 'use strict';
-
 import {useEffect, useState} from "react";
 import {getGames} from "../../apis/games.js";
 
@@ -11,7 +10,6 @@ export const useStatistics = setShowStats => {
         getGames()
             .then(res =>{
                 setShowStats(false);
-                console.log(res)
                 setGames(res.data.matches)
                 setTotScore(res.data.totalScore)
             })

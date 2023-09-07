@@ -21,7 +21,6 @@ function find(username, password){
                        providedSalted,
                        Buffer.from(row.hash, "hex"),
                    );
-                   console.log(equal)
                    if(equal){
                        resolve({...row, hash: undefined, salt: undefined});
                    } else {

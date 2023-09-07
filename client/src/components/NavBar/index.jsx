@@ -1,5 +1,6 @@
 import {Button, Container, Navbar, NavbarBrand, NavDropdown} from "react-bootstrap";
 import {useNavBar} from "./index.hooks.js";
+import {Link} from "react-router-dom";
 
 const MyNavBar = () => {
     const {navigate, handleLogout, user, showStats} = useNavBar();
@@ -7,7 +8,18 @@ const MyNavBar = () => {
         <>
             <Navbar bg={"dark"} data-bs-theme={"dark"} className={"fixed-top"} sticky={"top"}>
                 <Container fluid>
-                    <NavbarBrand className={'m-0'} onClick={()=> navigate("/")}>Guess Who?</NavbarBrand>
+                    <NavbarBrand className={'m-0'} onClick={()=> navigate("/")}>
+                        <Link
+                            to={"/"}
+                            style={{
+                                color: "white",
+                                textDecoration: "none",
+                                fontSize: 22
+                            }}
+                        >
+                            Guess Who?
+                        </Link>
+                    </NavbarBrand>
                 </Container>
                 <Container className={'justify-content-center'}>
                     <Navbar.Text>

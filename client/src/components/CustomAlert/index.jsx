@@ -2,7 +2,7 @@ import {Alert, Container} from "react-bootstrap";
 import {BsCheckLg, BsXLg} from 'react-icons/bs'
 
 
-const customAlert = ({isTrue, pos}) => {
+const customAlert = ({isTrue}) => {
     return (
         <Container
             className={"col-1"}

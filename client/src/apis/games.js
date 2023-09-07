@@ -46,7 +46,6 @@ export const checkProperty = async (id, property) => {
 
 export const endGame = async (id ,item) => {
     try {
-        console.log(id, item)
         const result = await api.put(`/games/${id}/item`, item, {
             withCredentials: true
         })

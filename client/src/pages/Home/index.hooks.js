@@ -1,4 +1,4 @@
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useContext, useEffect} from "react";
 import GameContext from "../../contexts/gameContext.js";
 
