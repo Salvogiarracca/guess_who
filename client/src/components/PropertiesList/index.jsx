@@ -2,7 +2,7 @@ import {usePropertiesList} from "./index.hook.js";
 import {Container, Row} from "react-bootstrap";
 import Property from "../Property/index.jsx";
 
-const PropertiesList = ({checkSelection}) => {
+const PropertiesList = ({checkSelection, disabledButtons}) => {
     const {properties} = usePropertiesList();
 
     return (
@@ -24,6 +24,7 @@ const PropertiesList = ({checkSelection}) => {
                             key={index}
                             property={prop}
                             checkSelection={checkSelection}
+                            disableButtons={disabledButtons}
                         />
                     )
                 })

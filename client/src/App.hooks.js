@@ -8,12 +8,13 @@ export default function useApp(){
     const [items, setItems] = useState([]);
     const [properties, setProperties] = useState([]);
     const [guess, setGuess] = useState("");
+    const [showStats, setShowStats] = useState(true);
 
-    // useEffect(() => {
-    //     checkSession()
-    //         .then(res => setUser(res))
-    //         .catch(()=> console.log("No credentials"))
-    // }, []);
+    useEffect(() => {
+        checkSession()
+            .then(res => setUser(res))
+            .catch(()=> console.log("No credentials"))
+    }, []);
 
     const handleLogout = () => {
         doLogOut().then(() => {
@@ -34,6 +35,8 @@ export default function useApp(){
         difficulty,
         setDifficulty,
         guess,
-        setGuess
+        setGuess,
+        showStats,
+        setShowStats
     }
 }

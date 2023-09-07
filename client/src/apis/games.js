@@ -7,11 +7,11 @@ export const getGames = async () => {
             withCredentials: true,
         })
         if(result.status !== 200){
-            throw new Error(result?.data?.error);
+            throw new Error(result?.data?.message);
         }
         return result;
     }catch (e) {
-        e?.response?.data?.message
+        e.response.data.message
     }
 }
 
@@ -23,7 +23,7 @@ export const startGame = async (difficulty) => {
             withCredentials: true,
         })
         if (result.status !== 200){
-            throw new Error(result?.data?.error);
+            throw new Error(result?.data?.message);
         }
         return result;
     } catch (e) {
@@ -32,15 +32,15 @@ export const startGame = async (difficulty) => {
 }
 export const checkProperty = async (id, property) => {
     try{
-        const result = await api.put(`/games/${id}/property`, property, {
+        const result = await api.post(`/games/${id}/property`, property, {
             withCredentials: true
         });
         if (result.status !== 200){
-            throw new Error(result?.data?.error);
+            throw new Error(result?.data?.message);
         }
         return result;
     }catch (e) {
-        return e.message;
+        return e?.response?.data?.message;
     }
 }
 
@@ -51,10 +51,10 @@ export const endGame = async (id ,item) => {
             withCredentials: true
         })
         if (result.status !== 200){
-            throw new Error(result?.data?.error);
+            throw new Error(result?.data?.message);
         }
         return result;
     } catch (e) {
-        return e.message;
+        return e?.response?.data?.message;
     }
 }

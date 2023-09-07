@@ -37,7 +37,9 @@ const Game = () => {
         showAlert,
         isTrue,
         finish,
-        navigate
+        finishedGame,
+        navigate,
+        disableButtons
     } = useGame();
 
     return (
@@ -85,20 +87,23 @@ const Game = () => {
                                     // style={{alignItems: "center", justifyContent: "center"}}
                                 >
                                     <Col
+                                        style={{
+                                            margin: "inherit"
+                                        }}
                                         // className={'align-items-center justify-content-center text-center'}
                                         // style={{alignItems:"center", justifyContent:"center", textAlign:"center"}}
                                     >
                                         {
                                             showAlert &&
                                             <div>
-                                                <CustomAlert isTrue={isTrue}/>
+                                                <CustomAlert isTrue={isTrue} pos={"start"}/>
                                             </div>
                                         }
 
 
                                     </Col>
                                     <Col
-                                        className={"col-9"}
+                                        className={"col-10"}
                                     >
                                         {
                                             finish ?
@@ -112,7 +117,34 @@ const Game = () => {
                                                     }}
                                                 >
                                                     <Alert>
-                                                        YOU {finish}
+                                                        <Row>
+                                                            <Container
+                                                                fluid
+                                                                style={{
+                                                                    fontSize: 80
+                                                                }}
+                                                            >
+                                                                YOU {finish}
+                                                            </Container>
+                                                        </Row>
+                                                        <Row style={{fontSize: 20}}>
+                                                            <Col style={{fontStyle:""}}>
+                                                                Secret Item: {finishedGame.secret_item}
+                                                            </Col>
+                                                            <Col>
+                                                                Selected Item: {guess}
+                                                            </Col>
+                                                        </Row>
+                                                        <Row style={{fontSize: 40}}>
+                                                            <Container>
+                                                                Score: {finishedGame.score}
+                                                            </Container>
+
+                                                        </Row>
+
+
+
+
                                                     </Alert>
                                                     <Button
                                                         variant={"secondary"}
@@ -135,6 +167,7 @@ const Game = () => {
                                                         checkSelection={checkSelection}
                                                         properties={properties}
                                                         setProperties={setProperties}
+                                                        disabledButtons={disableButtons}
                                                     />
                                                 </>
                                         }
@@ -144,7 +177,7 @@ const Game = () => {
                                         {
                                             showAlert &&
                                             <div>
-                                                <CustomAlert isTrue={isTrue}/>
+                                                <CustomAlert isTrue={isTrue} pos={"end"}/>
                                             </div>
                                         }
                                     </Col>

@@ -4,15 +4,16 @@ import DropdownToggle from "react-bootstrap/DropdownToggle";
 import DropdownMenu from "react-bootstrap/DropdownMenu";
 import DropdownItem from "react-bootstrap/DropdownItem";
 
-const Property = ({property, checkSelection}) => {
+const Property = ({property, checkSelection, disableButtons}) => {
     const { name, values, isDisabled} = useProperty(property);
     return (
         <Col>
             <Row>
                 <Dropdown>
                     <DropdownToggle
+
                         variant={"secondary"}
-                        disabled={isDisabled}
+                        disabled={isDisabled || disableButtons}
                     >
                         {name}
                     </DropdownToggle>
@@ -21,6 +22,7 @@ const Property = ({property, checkSelection}) => {
                             values.map((value, index) => {
                                 return (
                                     <DropdownItem
+                                        // disabled={disableButtons}
                                         key={index}
                                         onClick={() => {
                                             checkSelection(name, value)

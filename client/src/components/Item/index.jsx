@@ -1,13 +1,13 @@
 import {useItem} from "./index.hooks.js";
-import {Col, Container, Figure, Image, Row} from "react-bootstrap";
+import {Col, Container, Figure, Row} from "react-bootstrap";
 import {useContext} from "react";
 import GameContext from "../../contexts/gameContext.js";
 import FigureImage from "react-bootstrap/FigureImage";
 import FigureCaption from "react-bootstrap/FigureCaption";
 
 
-const Item = ({item, checkEnd, handleClose, handleShow}) => {
-    const {name, image_name, sex, skin, job, alive, glasses, eyes, hair, beard, navigate} = useItem(item);
+const Item = ({item, handleShow}) => {
+    const {name, image_name} = useItem(item);
     const {setGuess} = useContext(GameContext);
     return (
         <Col>

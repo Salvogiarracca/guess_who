@@ -1,11 +1,12 @@
 import {Button, Container} from "react-bootstrap";
 import {useHome} from "./index.hooks.js";
 
-const Home = () => {
+const Home = ({setShowStats}) => {
     const {
         modalities,
         handleDifficulty
-    } = useHome();
+    } = useHome(setShowStats);
+
     return (
         <>
             <Container

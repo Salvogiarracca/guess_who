@@ -15,13 +15,18 @@ const FormEmailField = ({name, ...props}) => {
                             {props.label}
                         </FormLabel>
                         <FormControl
-                            placeholder={'enter email'}
+                            placeholder={'Email'}
                             name={name}
                             {...props}
                             value={value}
                             onChange={ev => onChange(ev.target.value)}
+                            isInvalid={errors[name]}
                         />
+                        <FormControl.Feedback>
+                            {errors[name].message}
+                        </FormControl.Feedback>
                     </FormGroup>
+
                 )
             }}
         />

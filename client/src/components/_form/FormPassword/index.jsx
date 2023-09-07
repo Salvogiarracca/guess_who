@@ -15,12 +15,15 @@ export const FormPassword = (({name, ...props}) => {
                             {props.label}
                         </FormLabel>
                         <FormControl
-                            placeholder={'enter password'}
+                            placeholder={'Password'}
                             name={name}
                             {...props}
                             value={value}
                             onChange={ev => onChange(ev.target.value)}
                         />
+                        {/*<FormControl.Feedback>*/}
+                        {/*    {errors.root?.message}*/}
+                        {/*</FormControl.Feedback>*/}
                     </FormGroup>
                 )
             }}

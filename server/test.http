@@ -28,7 +28,21 @@
 #}
 
 
-#PUT http://localhost:3000/games/8/property
+
+
+
+#GET http://localhost:3000/games
+
+#POST http://localhost:3000/games/
+#Content-Type: application/json
+#
+#{
+#"difficulty": 0
+#}
+
+
+
+#PUT http://localhost:3000/games/3/property
 #Content-Type: application/json
 #
 #{
@@ -37,19 +51,18 @@
 #}
 
 
-#PUT http://localhost:3000/games/49/item
+#POST http://localhost:3000/session
 #Content-Type: application/json
 #
 #{
-#  "name": "Bradley Cooper"
+#  "username": "salvo@test.com",
+#  "password": "psw"
 #}
 
-#GET http://localhost:3000/games
 
-POST http://localhost:3000/games/
+PUT http://localhost:3000/games/22/item
 Content-Type: application/json
 
 {
-"difficulty": 2
+  "name": "Bradley Cooper"
 }
-

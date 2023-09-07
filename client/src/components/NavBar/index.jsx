@@ -1,9 +1,8 @@
 import {Button, Container, Navbar, NavbarBrand, NavDropdown} from "react-bootstrap";
 import {useNavBar} from "./index.hooks.js";
-import DropdownItem from "react-bootstrap/DropdownItem";
 
 const MyNavBar = () => {
-    const {navigate, handleLogout, user} = useNavBar();
+    const {navigate, handleLogout, user, showStats} = useNavBar();
     return (
         <>
             <Navbar bg={"dark"} data-bs-theme={"dark"} className={"fixed-top"} sticky={"top"}>
@@ -15,18 +14,11 @@ const MyNavBar = () => {
                         {
                             user && `Logged In as: ${user.name}`
                         }
-                        {/*logged in as: {user && user.name}*/}
                     </Navbar.Text>
                 </Container>
 
                 <Container fluid className={"justify-content-end"}>
                     {user ? (
-                        // <Button
-                        //     variant={"danger"}
-                        //     onClick={handleLogout}
-                        // >
-                        //     Logout
-                        // </Button>
                         <NavDropdown
                             className={'dropstart'}
                             title={"Menu"}
@@ -34,14 +26,32 @@ const MyNavBar = () => {
                                 color: "white",
                         }}
                         >
+                            {
+                                !showStats?
+                                    <NavDropdown.Item
+                                        style={{right: "10%"}}
+                                        onClick={()=>{
+                                            navigate("/");
+                                        }}
+                                    >
+                                        Home
+                                    </NavDropdown.Item>:
+                                    <NavDropdown.Item
+                                        style={{right: "10%"}}
+                                        onClick={()=> {
+                                            navigate("/stats")
+                                        }}
+                                    >
+                                        Statistics
+                                    </NavDropdown.Item>
+
+                            }
+
                             <NavDropdown.Item
-                                style={{right: "10%"}}
-                                onClick={()=>navigate("/stats")}
-                            >
-                                Statistics
-                            </NavDropdown.Item>
-                            <NavDropdown.Item
-                                onClick={()=>handleLogout()}
+                                onClick={()=> {
+                                    handleLogout()
+                                    navigate("/")
+                                }}
                             >
                                 Logout
                             </NavDropdown.Item>

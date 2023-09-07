@@ -1,47 +1,74 @@
 import {Container, Table} from "react-bootstrap";
 import {useStatistics} from "./index.hooks.js";
 
-const Statistics = () => {
+const Statistics = ({setShowStats}) => {
 
-    const {games} = useStatistics();
+    const {games, totScore} = useStatistics(setShowStats);
 
     return (
-        <Container
-            fluid
-            style={{
-                marginTop: 20
-            }}
-        >
-            <Table striped bordered hover variant="dark">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>User</th>
-                    <th>Date</th>
-                    <th>State</th>
-                    <th>Secret Item</th>
-                    <th>Difficulty</th>
-                    <th>Score</th>
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    games.map((game, index) => {
-                        return (
-                            <tr key={index}>
-                                <td>{game.id}</td>
-                                <td>{game.user}</td>
-                                <td>{game.date}</td>
-                                <td>{game.state}</td>
-                                <td>{game.secret_item}</td>
-                                <td>{game.difficulty}</td>
-                                <td>{game.score}</td>
-                            </tr>
-                        )
-                    })
-                }
-                </tbody>
-            </Table>
+        <Container>
+            <Container
+                fluid
+                style={{
+                    marginTop: 20
+                }}
+            >
+                <Table
+                    striped
+                    bordered={false}
+                    hover
+                    variant="dark"
+                >
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>User</th>
+                        <th>Date</th>
+                        <th>Secret Item</th>
+                        <th>Difficulty</th>
+                        <th>Score</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        games.map((game, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td>{game.id}</td>
+                                    <td>{game.user}</td>
+                                    <td>{game.date}</td>
+                                    <td>{game.secret_item}</td>
+                                    <td>{game.difficulty}</td>
+                                    <td>{game.score}</td>
+                                </tr>
+                            )
+                        })
+                    }
+                    </tbody>
+                    <tfoot>
+                        <tr style={{
+                            borderBottom: 0
+                        }}
+                        >
+                            <td
+                                colSpan={4}
+                                style={{
+                                    backgroundColor: "white"
+                                }}
+                            >
+                            </td>
+                            <td
+                                style={{
+                                    textAlign: "start"
+                                }}
+                            >
+                                Total Score
+                            </td>
+                            <td>{totScore}</td>
+                        </tr>
+                    </tfoot>
+                </Table>
+            </Container>
         </Container>
     )
 }

@@ -7,7 +7,6 @@ export const useProperty = (property) => {
 
     const [values, setValues] = useState([]);
     const [isDisabled, setIsDisabled] = useState(false);
-    // const { checkSelection } = useGame();
 
     useEffect(() => {
         setValues(property.values);
@@ -15,5 +14,5 @@ export const useProperty = (property) => {
             setIsDisabled(true)
     }, [property.values.length, property.values]);
 
-    return { name, values, isDisabled, setIsDisabled}
+    return { name, values, isDisabled, setIsDisabled }
 }

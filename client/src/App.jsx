@@ -26,7 +26,9 @@ function App() {
         setDifficulty,
         guess,
         setGuess,
-        isLoading
+        isLoading,
+        setShowStats,
+        showStats
     } = useApp()
     return (
         <>
@@ -35,19 +37,20 @@ function App() {
                     value={{user, handleLogout}}
                 >
                     <GameContext.Provider
-                        value={{ items, setItems, properties, setProperties, gameId, setGameId, difficulty, setDifficulty, guess, setGuess, isLoading}}
+                        value={{ items, setItems, properties, setProperties, gameId, setGameId, difficulty, setDifficulty, guess, setGuess, isLoading, showStats}}
                     >
                         <Routes>
                             <Route element={<Layout/>}>
-                                <Route path={"/"} index element={<Home />}/>
+                                <Route path={"/"} index element={<Home setShowStats={setShowStats}/>}/>
                                 <Route path={"/play"} element={<Game/>}/>
-                                <Route path={"/login"} element={<Login setUser={setUser}/>}/>
-                                <Route path={"/stats"} element={ <Statistics/>
-                                    // <ProtectedRoute>
-                                    //     <Statistics />
-                                    // </ProtectedRoute>
+                                <Route path={"/stats"} element={
+                                    <ProtectedRoute>
+                                        <Statistics setShowStats={setShowStats}/>
+                                    </ProtectedRoute>
                                 }/>
+                                <Route path={"/login"} element={<Login setUser={setUser}/>}/>
                             </Route>
+
                             <Route path={"*"} element={<PageNotFound/>}/>
                         </Routes>
                     </GameContext.Provider>

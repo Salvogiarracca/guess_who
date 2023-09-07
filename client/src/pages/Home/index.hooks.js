@@ -1,8 +1,8 @@
 import {useNavigate, useParams} from "react-router-dom";
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import GameContext from "../../contexts/gameContext.js";
 
-export const useHome = () => {
+export const useHome = setShowStats => {
     const {difficulty, setDifficulty} = useContext(GameContext);
     const navigate = useNavigate();
     const modalities = [
@@ -10,6 +10,10 @@ export const useHome = () => {
         'Medium',
         'Hard'
     ];
+
+    useEffect(() => {
+        setShowStats(true)
+    }, []);
 
     const handleDifficulty = (d) => {
         switch (d) {

@@ -2,7 +2,7 @@ import {Alert, Container} from "react-bootstrap";
 import {BsCheckLg, BsXLg} from 'react-icons/bs'
 
 
-const customAlert = ({isTrue}) => {
+const customAlert = ({isTrue, pos}) => {
     return (
         <Container
             className={"col-1"}
@@ -10,26 +10,29 @@ const customAlert = ({isTrue}) => {
                 position: "fixed",
                 alignItems: "center",
                 textAlign: "center",
+
             }}
         >
             {
                 isTrue?
                     <Alert
+                        className={"d-flex align-items-center justify-content-center"}
                         variant={"success"}
                         style={{
                             height: "100vh",
                         }}
                     >
-                        <BsCheckLg/>
+                        <BsCheckLg style={{fontSize: 50}}/>
 
                     </Alert> :
                     <Alert
+                        className={"d-flex align-items-center justify-content-center"}
                         variant={"danger"}
                         style={{
                             height: "100vh",
                         }}
                     >
-                        <BsXLg/>
+                        <BsXLg style={{fontSize: 50}}/>
                     </Alert>
             }
 

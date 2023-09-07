@@ -11,9 +11,7 @@ const LocalStrategy = require('passport-local');
 
 const User = require('./models/user');
 
-const {
-    getItems, getNItems,
-} = require("./controllers/items");
+
 require("dotenv").config();
 
 
@@ -110,11 +108,8 @@ app.delete("/logout", (req, res) => {
 
 
 //api endpoints
-// app.get("/items", getItems);
-app.get('/nitems', getNItems);
-// app.get("/properties", getProperties);
-app.get("/games", getMatches);
+app.get("/games", isLoggedIn, getMatches);
 app.post("/games", startGame);
-app.put("/games/:id/property", checkProperty);
+app.post("/games/:id/property", checkProperty);
 app.put("/games/:id/item", checkItem);
 module.exports = app;

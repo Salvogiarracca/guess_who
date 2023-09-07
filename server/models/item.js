@@ -1,26 +1,7 @@
 'use strict';
 
 const db = require("../db/connection");
-const rollbackTransaction = () => {
-    db.run("ROLLBACK", function (err){
-        if (err){
-            console.error(err);
-        }
-    });
-};
-
-const getAll = () => {
-    return new Promise((resolve, reject) => {
-        const sql = "SELECT * FROM items";
-        db.all(sql, (err, rows) =>{
-            if(err) {
-                reject(err);
-            }
-            resolve(rows);
-        });
-    });
-}
-
+// const rollbackTransaction = () => {
 const getById = id => {
     return new Promise((resolve, reject)=>{
         const sql = "SELECT id, name FROM items WHERE id=?"
@@ -55,7 +36,7 @@ const getN = num => {
 }
 
 
-exports.getAll = getAll;
+// exports.getAll = getAll;
 exports.getById = getById;
 exports.getByName = getByName;
 exports.getN = getN;

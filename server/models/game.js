@@ -3,8 +3,8 @@ const db = require("../db/connection");
 
 const getByUser = user => {
     return new Promise((resolve, reject) => {
-        const sql = "SELECT * FROM matches WHERE user=?";
-        db.all(sql, [user], function (err, rows) {
+        const sql = "SELECT * FROM matches WHERE user=? AND status = ?";
+        db.all(sql, [user, "Complete"], function (err, rows) {
             if (err)
                 reject(err)
             resolve(rows)
@@ -14,9 +14,9 @@ const getByUser = user => {
 
 const newMatch = game => {
     return new Promise((resolve, reject) => {
-        const sql = "INSERT INTO matches (user, date, state, secret_item, difficulty, score) VALUES (?,?,?,?,?,?)"
+        const sql = "INSERT INTO matches (user, date, status, secret_item, difficulty, score) VALUES (?,?,?,?,?,?)"
         console.log(game)
-        db.run(sql, [game.user, game.date, game.state, game.secret_item, game.difficulty, game.score], function (err) {
+        db.run(sql, [game.user, game.date, game.status, game.secret_item, game.difficulty, game.score], function (err) {
             if (err)
                 reject(err);
             resolve(this.lastID);
@@ -37,17 +37,17 @@ const getById = id => {
 
 const completeMatch = (id, result) => {
     return new Promise((resolve, reject) => {
-        const newState = "Complete";
+        const newStatus = "Complete";
         const score = 0;
         if (result) {
-            const sql = "UPDATE matches SET state = ? WHERE id = ?"
-            db.run(sql, [newState, id], function (err) {
+            const sql = "UPDATE matches SET status = ? WHERE id = ?"
+            db.run(sql, [newStatus, id], function (err) {
                 if (err)
                     reject(err)
             })
         } else {
-            const sql = "UPDATE matches SET state = ?, score = ? WHERE id = ?"
-            db.run(sql, [newState, score, id], function (err) {
+            const sql = "UPDATE matches SET status = ?, score = ? WHERE id = ?"
+            db.run(sql, [newStatus, score, id], function (err) {
                 if (err)
                     reject(err)
             })
@@ -105,6 +105,17 @@ const updateSequence = (tableName) =>{
     })
 }
 
+const getTotalScore = (user) =>{
+    return new Promise((resolve, reject) => {
+        const sql = "SELECT SUM(score) AS totalScore FROM matches WHERE user = ? AND status = ?"
+        db.get(sql, [user, "Complete"], function (err, row){
+            if(err)
+                reject(err)
+            resolve(row)
+        })
+    })
+}
+
 exports.getByUser = getByUser;
 exports.newMatch = newMatch;
 exports.getById = getById;
@@ -113,3 +124,4 @@ exports.completeMatch = completeMatch;
 // exports.setScore = setScore;
 exports.deleteMatch = deleteMatch;
 exports.updateSequence = updateSequence;
+exports.getTotalScore = getTotalScore;

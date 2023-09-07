@@ -1,40 +1,85 @@
 import useLogin from "./index.hooks.js";
-import {Button, Container, Form} from "react-bootstrap";
-import {FormProvider} from "react-hook-form";
-import FormEmailField from "../../components/_form/FormEmailField/index.jsx";
-import {FormPassword} from "../../components/_form/FormPassword/index.jsx";
-import {Link} from "react-router-dom";
+import {Button, Container, Form, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 
 const Login = setUser => {
-    const {formData, onSubmit} = useLogin(setUser);
+    const {
+        register,
+        handleSubmit,
+        errors,
+        dirtyFields,
+        onSubmit,
+        navigate
+    } = useLogin(setUser)
 
     return (
-        <Container>
-            <FormProvider {...formData}>
-                <Form onSubmit={onSubmit}>
-                    <FormEmailField
-                        name={"username"}
-                        label={"Email"}
+        <Container
+            style={{
+                marginTop: 20
+            }}
+        >
+            <Form
+                onSubmit={handleSubmit(onSubmit)}
+                noValidate
+            >
+                <FormGroup className={"mb-3"}>
+                    <FormLabel>Username</FormLabel>
+                    <FormControl
+                        {...register("email")}
+                        type={"email"}
+                        placeholder={"Email"}
+                        isInvalid={errors.email || errors.root?.serverError}
+                        isValid={!errors.email && !errors.root?.serverError && dirtyFields.email}
                     />
-                    <FormPassword
-                        name={"password"}
-                        label={"Password"}
-                    />
-                    <Button
-                        type='submit'
-                        variant='secondary'
+                    <FormControl.Feedback
+                        type="invalid"
                     >
-                        Login
-                    </Button>
-                    <Link to={"/"}>
-                        <Button
-                            variant={"danger"}
-                        >
-                            Cancel
-                        </Button>
-                    </Link>
-                </Form>
-            </FormProvider>
+                        {errors.root?.serverError.message
+                            ? errors.root.serverError.message
+                            : errors.email?.message}
+                    </FormControl.Feedback>
+                </FormGroup>
+                <FormGroup
+                    style={{
+                        marginTop: 20
+                    }}
+                >
+                    <FormLabel>Password</FormLabel>
+                    <FormControl
+                        {...register("password")}
+                        type={"password"}
+                        placeholder={"Password"}
+                        isInvalid={errors.password || errors.root?.serverError}
+                        isValid={!errors.password && !errors.root?.serverError && dirtyFields.password}
+                    />
+                    <FormControl.Feedback
+                        type="invalid"
+                    >
+                        {errors.password?.message}
+                    </FormControl.Feedback>
+                </FormGroup>
+                <Button
+                    variant={"primary"}
+                    type={"submit"}
+                    style={{
+                        marginTop: 20
+                    }}
+                >
+                    Submit
+                </Button>
+                <Button
+                    style={{
+                        marginTop: 20,
+                        marginLeft: 20
+                    }}
+                    variant={"secondary"}
+                    type={"button"}
+                    onClick={() => {
+                        navigate("/");
+                    }}
+                >
+                    Cancel
+                </Button>
+            </Form>
         </Container>
     )
 }

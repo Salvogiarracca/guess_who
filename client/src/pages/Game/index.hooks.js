@@ -11,6 +11,8 @@ export const useGame = () => {
     const [showAlert, setShowAlert] = useState(false);
     const [isTrue, setIsTrue] = useState(false);
     const [finish, setFinish] = useState("");
+    const [finishedGame, setFinishedGame] = useState(undefined)
+    const [disableButtons, setDisableButtons] = useState(false);
     const navigate = useNavigate();
     const handleClose = ()=> setShow(false);
     const handleShow = ()=> setShow(true);
@@ -25,8 +27,9 @@ export const useGame = () => {
         })
 
         setProperties(currentProperties)
+        setDisableButtons(false)
         setShowAlert(false);
-    }, 2000)};
+    }, 3000)};
 
     const start = () => {
         startGame(difficulty)
@@ -44,6 +47,7 @@ export const useGame = () => {
         checkProperty(gameId, {name:name, value: value})
             .then(res => {
                 setShowAlert(true)
+                setDisableButtons(true)
                 setIsTrue(res.data.result)
                 timeout(name, value, res.data.result);
             })
@@ -58,6 +62,7 @@ export const useGame = () => {
                 // console.log(res.data)
                 // handleClose()
                 // setGuess("")
+                setFinishedGame(res.data.game)
                 res.data.result? setFinish("WIN"): setFinish("LOSE")
 
             })
@@ -87,6 +92,8 @@ export const useGame = () => {
         showAlert,
         isTrue,
         finish,
-        navigate
+        finishedGame,
+        navigate,
+        disableButtons
     }
 }
