@@ -50,7 +50,6 @@ function App() {
                                 }/>
                                 <Route path={"/login"} element={<Login setUser={setUser}/>}/>
                             </Route>
-
                             <Route path={"*"} element={<PageNotFound/>}/>
                         </Routes>
                     </GameContext.Provider>

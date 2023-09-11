@@ -14,7 +14,6 @@ const PropertiesList = ({checkSelection, disabledButtons}) => {
                 left: '0',
                 right: '0',
             }}
-
         >
             <Row md={"auto"} className={"justify-content-center"}>
             {

@@ -56,7 +56,7 @@
   ```json
       { "result": true, "message": "ok" }
   ```
-- POST `/games/:id/item`
+- PUT `/games/:id/item`
 - request params: id: number (gameId)
 - request body: { itemName: string }
 - response body: { game: completedMatch, result: result, message: message.message }
@@ -88,7 +88,7 @@
 
 ## Main React Components
 ### `index.hooks.js` contains the logic of the component
-### `index.jsx` contains perform the rendering
+### `index.jsx` perform the rendering of the component
 ###
 
 - `Home` (in `pages/Home/index.jsx`): It's purpose is to let player select the difficulty
@@ -96,12 +96,26 @@
 - `ItemsList` (in `components/ItemsList/index.jsx`): It's purpose is to render the list of items 
 - `Login` (in `pages/Login/index.jsx`): It's purpose is to render the Login Form
 - `Statistics` (in `pages/Login/index.jsx`): It's purpose is to render the table with the previous matches of the player
-- `PropertyList` (in `components/PropertyList/index.jsx`): It's purpose is to render the list of properties
+- `PropertiesList` (in `components/PropertyList/index.jsx`): It's purpose is to render the list of properties
 - `NavBar` (in `components/NavBar/index.jsx`): It's purpose is to render the NavBar with the login button to perform the Login
 - `ProtectedRoute` (in `components/ProtectedPage/index.jsx`): It's purpose is to protect the user to navigate in stats page
 
 
 # Usage info
+
+## Instructions
+### `node.js` must be installed on the system
+
+- Open a terminal inside `server` directory and run:
+```
+npm i
+nodemon index.js 
+```
+- Open a terminal inside `client` directory and run:
+```
+npm i
+npm run dev 
+```
 
 ## Example Screenshot
 
@@ -117,5 +131,6 @@
 | Salvo  | salvo@test.com  | psw      |
 | Mario  | mario@test.com  | psw      |
 | Ciccio | ciccio@test.com | psw      |
+
 
 

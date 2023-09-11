@@ -89,21 +89,6 @@ const deleteMatch = id => {
     })
 }
 
-const updateSequence = (tableName) =>{
-    return new Promise((resolve, reject)=>{
-        db.run("UPDATE sqlite_sequence SET seq = seq - 1 WHERE name = ?",
-            [tableName], function (err){
-                if (err)
-                    reject(err)
-                if (this.changes === 0) {
-                    reject({message: "Record not found"});
-                } else {
-                    resolve({message: "Sequence updated"});
-                }
-            })
-    })
-}
-
 const getTotalScore = (user) =>{
     return new Promise((resolve, reject) => {
         const sql = "SELECT SUM(score) AS totalScore FROM matches WHERE user = ? AND status = ?"
@@ -120,7 +105,6 @@ exports.newMatch = newMatch;
 exports.getById = getById;
 exports.decreaseScore = decreaseScore;
 exports.completeMatch = completeMatch;
-// exports.setScore = setScore;
 exports.deleteMatch = deleteMatch;
 exports.updateSequence = updateSequence;
 exports.getTotalScore = getTotalScore;

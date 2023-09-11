@@ -42,7 +42,6 @@ export const useGame = () => {
             .catch(e => console.log(e))
     }
 
-
     const checkSelection = (name, value) => {
         checkProperty(gameId, {name:name, value: value})
             .then(res => {

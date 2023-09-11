@@ -2,7 +2,6 @@ import {Container, Table} from "react-bootstrap";
 import {useStatistics} from "./index.hooks.js";
 
 const Statistics = ({setShowStats}) => {
-
     const {games, totScore} = useStatistics(setShowStats);
 
     return (

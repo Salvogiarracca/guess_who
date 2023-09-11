@@ -22,7 +22,6 @@ const Property = ({property, checkSelection, disableButtons}) => {
                             values.map((value, index) => {
                                 return (
                                     <DropdownItem
-                                        // disabled={disableButtons}
                                         key={index}
                                         onClick={() => {
                                             checkSelection(name, value)

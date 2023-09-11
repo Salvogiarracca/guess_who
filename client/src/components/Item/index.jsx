@@ -11,7 +11,6 @@ const Item = ({item, handleShow}) => {
     const {setGuess} = useContext(GameContext);
     return (
         <Col>
-            {/*style={{justifyContent: "center", marginTop: 20}}*/}
             <Row>
                 <Container style={{alignItems: "center", justifyContent: "center", textAlign: "center"}}>
                     <Figure>

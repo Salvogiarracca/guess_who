@@ -79,7 +79,6 @@ const Game = () => {
                                 </Button>
                             </ModalFooter>
                         </Modal>
-
                         {
                             isLoading ?
                                 <LoadingSpinner/> :
@@ -93,7 +92,7 @@ const Game = () => {
                                         {
                                             showAlert &&
                                             <div>
-                                                <CustomAlert isTrue={isTrue} pos={"start"}/>
+                                                <CustomAlert isTrue={isTrue}/>
                                             </div>
                                         }
                                     </Col>
@@ -134,12 +133,7 @@ const Game = () => {
                                                             <Container>
                                                                 Score: {finishedGame.score}
                                                             </Container>
-
                                                         </Row>
-
-
-
-
                                                     </Alert>
                                                     <Button
                                                         variant={"secondary"}
@@ -166,13 +160,12 @@ const Game = () => {
                                                     />
                                                 </>
                                         }
-
                                     </Col>
                                     <Col>
                                         {
                                             showAlert &&
                                             <div>
-                                                <CustomAlert isTrue={isTrue} pos={"end"}/>
+                                                <CustomAlert isTrue={isTrue}/>
                                             </div>
                                         }
                                     </Col>

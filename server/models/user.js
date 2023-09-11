@@ -31,4 +31,5 @@ function find(username, password){
         });
     });
 }
+
 exports.find = find;

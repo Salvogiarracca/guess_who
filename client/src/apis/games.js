@@ -11,7 +11,7 @@ export const getGames = async () => {
         }
         return result;
     }catch (e) {
-        e.response.data.message
+        e?.response?.data?.message
     }
 }
 

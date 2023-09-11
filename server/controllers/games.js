@@ -65,7 +65,6 @@ const checkProperty = async (req, res) => {
                     .number()
                     .integer()
                     .required("Id is required")
-
         const gameId = paramSchema.validateSync(req.params.id);
 
         const bodySchema = yup
@@ -105,7 +104,6 @@ const checkItem = async (req, res) => {
             .required("ItemName is required")
 
         const itemName = bodySchema.validateSync(req.body.name);
-
         const user = req.user? req.user.name : "guest";
 
         const currMatch = await Game.getById(gameId);
@@ -114,16 +112,11 @@ const checkItem = async (req, res) => {
         }
 
         const result = (itemName === currMatch.secret_item);
-
-
         const message = await completeMatch(gameId, result);
-
         const completedMatch = await Game.getById(gameId);
-
 
         if(user === "guest"){
             await deleteMatch(gameId);
-            await updateSequence("matches")
         }
 
         return res.status(200).json({game:completedMatch, result: result, message: message.message});
