@@ -106,5 +106,4 @@ exports.getById = getById;
 exports.decreaseScore = decreaseScore;
 exports.completeMatch = completeMatch;
 exports.deleteMatch = deleteMatch;
-exports.updateSequence = updateSequence;
 exports.getTotalScore = getTotalScore;
